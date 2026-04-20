@@ -1,38 +1,20 @@
-[ Railway Template Config ]
-[build]
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
+build.builder = "DOCKERFILE"
+build.dockerfilePath = "Dockerfile"
 
 [deploy]
 numReplicas = 1
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
-# Health check - Railway pings this path to confirm app is ready
 [deploy.healthcheckPath]
 path = "/"
 port = 20128
 
-# Environment variables injected at deploy time
-# Railway auto-provides: PORT, RAILWAY_PUBLIC_DOMAIN, RAILWAY_PRIVATE_DOMAIN
-
 [environment]
-# --- REQUIRED ---
-# Change this to a strong random string (min 32 chars)
+# Required
 JWT_SECRET = "CHANGE_ME_GENERATE_STRONG_PASSWORD"
-
-# --- RECOMMENDED ---
+# Recommended
 NODE_ENV = "production"
-
-# --- OPTIONAL: Cloud Sync ---
-# Disable if you don't need cloud sync features
+# Optional: Cloud sync
 CLOUD_URL = ""
 OBSERVABILITY_ENABLED = "false"
-
-# --- PROVIDER API KEYS ---
-# Add your AI provider keys here. Examples:
-# OPENAI_API_KEY = "sk-..."
-# ANTHROPIC_API_KEY = "sk-ant-..."
-# GOOGLE_API_KEY = "..."
-# GROQ_API_KEY = "..."
-# OPENROUTER_API_KEY = "..."
