@@ -22,7 +22,10 @@ export async function GET(request, { params }) {
     const { searchParams } = new URL(request.url);
 
     if (action === "authorize") {
-      const redirectUri = searchParams.get("redirect_uri") || process.env.BASE_URL || `http://localhost:${process.env.PORT || "8080"}/callback`;
+      // Railway deployment support
+      const RAILWAY_DOMAIN = process.env.RAILWAY_PUBLIC_DOMAIN;
+      const RAILWAY_PUBLIC_URL = RAILWAY_DOMAIN ? `https://${RAILWAY_DOMAIN}` : null;
+      const redirectUri = searchParams.get("redirect_uri") || process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || RAILWAY_PUBLIC_URL || `http://localhost:${process.env.PORT || "20128"}/callback`;
       // Collect provider-specific meta params (e.g. gitlab passes baseUrl, clientId, clientSecret)
       const reservedParams = new Set(["redirect_uri"]);
       const meta = {};
