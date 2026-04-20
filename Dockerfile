@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.4
 ARG BUN_IMAGE=oven/bun:1.3.2-alpine
 FROM ${BUN_IMAGE} AS base
 WORKDIR /app
@@ -8,8 +8,7 @@ FROM base AS builder
 RUN apk --no-cache upgrade && apk --no-cache add nodejs npm python3 make g++ linux-headers
 
 COPY package.json ./
-RUN --mount=type=cache,target=/root/.npm \
-  npm install
+RUN npm install
 
 COPY . ./
 ENV NEXT_TELEMETRY_DISABLED=1
