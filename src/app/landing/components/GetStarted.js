@@ -1,13 +1,16 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+function getBaseUrl() {
+  if (typeof window !== "undefined") {
+    return process.env.NEXT_PUBLIC_BASE_URL || window.location.origin;
+  }
+  return process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:20128";
+}
 
 export default function GetStarted() {
   const [copied, setCopied] = useState(false);
-  const [baseUrl, setBaseUrl] = useState("http://localhost:20128");
-
-  useEffect(() => {
-    setBaseUrl(process.env.NEXT_PUBLIC_BASE_URL || window.location.origin);
-  }, []);
+  const baseUrl = getBaseUrl();
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
