@@ -1,20 +1,15 @@
-build.builder = "DOCKERFILE"
-build.dockerfilePath = "Dockerfile"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
 
 [deploy]
 numReplicas = 1
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
-[deploy.healthcheckPath]
+[deploy.healthcheck]
 path = "/"
 port = 20128
 
 [environment]
-# Required
-JWT_SECRET = "CHANGE_ME_GENERATE_STRONG_PASSWORD"
-# Recommended
+JWT_SECRET = "CHANGE_ME"
 NODE_ENV = "production"
-# Optional: Cloud sync
-CLOUD_URL = ""
-OBSERVABILITY_ENABLED = "false"
