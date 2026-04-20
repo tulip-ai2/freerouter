@@ -42,8 +42,12 @@ In Railway dashboard → **Variables**, add:
 |----------|-------|----------|
 | `JWT_SECRET` | A strong random string (32+ chars) | ✅ **Required** |
 | `INITIAL_PASSWORD` | Your admin password | ✅ **Required** |
+| `NEXT_PUBLIC_BASE_URL` | `https://YOUR_APP_NAME.railway.app` | ✅ **Required** |
+| `BASE_URL` | `https://YOUR_APP_NAME.railway.app` | ✅ **Required** |
 | `NODE_ENV` | `production` | Recommended |
 | `DATA_DIR` | `/var/lib/freerouter` | Default |
+
+> ⚠️ **Important:** Replace `YOUR_APP_NAME` with your actual Railway deployment URL shown in the Railway dashboard (e.g., `something-freerouter-up.railway.app`).
 
 **Provider API Keys** (add as needed):
 

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card, Button, Badge, Input } from "@/shared/components";
 
-const DEFAULT_MITM_ROUTER_BASE = "http://localhost:20128";
+const DEFAULT_MITM_ROUTER_BASE = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:20128";
 
 /**
  * Shared MITM infrastructure card — manages SSL cert + server start/stop.

@@ -15,7 +15,13 @@ import { getSettings, updateSettings } from "@/lib/localDb";
 
 initDbHooks(getSettings, updateSettings);
 
-const DEFAULT_MITM_ROUTER_BASE = "http://localhost:20128";
+const RAILWAY_DOMAIN = process.env.RAILWAY_PUBLIC_DOMAIN;
+const RAILWAY_PORT = process.env.PORT || "20128";
+const RAILWAY_BASE_URL = RAILWAY_DOMAIN
+  ? `https://${RAILWAY_DOMAIN}`
+  : `http://localhost:${RAILWAY_PORT}`;
+
+const DEFAULT_MITM_ROUTER_BASE = process.env.BASE_URL || RAILWAY_BASE_URL;
 
 function normalizeMitmRouterBaseUrlInput(input) {
   if (input == null || String(input).trim() === "") {

@@ -132,7 +132,7 @@ export default function CLIToolsPageClient({ machineId }) {
     if (tunnelEnabled && tunnelPublicUrl) return tunnelPublicUrl;
     if (cloudEnabled && CLOUD_URL) return CLOUD_URL;
     if (typeof window !== "undefined") return window.location.origin;
-    return "http://localhost:20128";
+    return process.env.NEXT_PUBLIC_BASE_URL || window.location.origin || "http://localhost:20128";
   };
 
   if (loading) {
