@@ -141,7 +141,7 @@ FreeRouter auto-detects these and configures the router accordingly.
 
 | File | Purpose |
 |------|---------|
-| `railway.toml` | Railway template config (build, deploy, health check) |
+| `railway.json` | Railway template config (build: Dockerfile, deploy: start cmd, health check) |
 | `Dockerfile` | Multi-stage build with Bun + Next.js |
 | `start.sh` | Init script (sets up data dir, validates env) |
 | `.env.example` | Template for environment variables |
